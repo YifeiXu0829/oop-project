@@ -2,6 +2,21 @@
 #include <vector>
 #include <sstream>
 
+/// the original code problems:
+/// 1. account and coressponding transactions should not be accessed to FinancialReportNotificationManager
+/// 2. transactions should only exist inside a coressponding account, should not exit independently outside account.
+/// 3. account and transaction 's constructor reveal too much information (? not sure)
+/// 4. NotificationEngine does not have to be created every time a delivery is requested.
+/// 5. FinancialReportNotificationManager can be an adaptor of account class to helper it generate/send report of an account
+
+/////////////////////////////////////////////////////////////
+/// how my solution handles it:
+/// 1. added a public call of add_transaction_for_this_account in account class so that transactions only lives as long as the account.
+/// 2. following (1.), transactions will only live inside of a corresponding account and without having access to outside objects.
+/// 3. deleted default constructor for account and transaction class, any new instances of them should be explicitly created of a certain constructor.
+/// 4. made deliver a static method in NotificationEngine.
+/// 5. made FinancialReportNotificationManager an abstract class (interface), and let account class derived from it so that reports can be generated as to the account instance.
+
 struct NotificationEngine
 {
     static void deliver(std::string from, std::string to, std::string subject, std::string_view report)
@@ -11,6 +26,7 @@ struct NotificationEngine
     }
 };
 
+// abstract interface class as a parent class of account class, provide report generate and send interface to user
 class report_manager
 {
 public:
@@ -22,6 +38,7 @@ protected:
     std::ostringstream report_;
 };
 
+// transaction objects should be only owned by account objects, no transaction should exist without a coressponding account.
 class transaction
 {
 public:
@@ -44,6 +61,7 @@ std::ostream& operator<<(std::ostream& out, const transaction& tran)
     return out;
 }
 
+// the account object should only be explicitly created, also as an implementation of report_manager, to have the ability to generate/send reports.
 class account : public report_manager
 {
 public:
