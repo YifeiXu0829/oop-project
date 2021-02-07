@@ -1,4 +1,5 @@
-# hw1
+# hw1 
+# requires cmake version 3 (or up) being installed on target machine.
 
 at root dir, 
 
@@ -8,7 +9,7 @@ run 'cmake .'
 
 run 'make'
 
-target executable in '~hw1/build/'
+target executable will be built in '~hw1/build/'
 
 run the executable to start the program
 
