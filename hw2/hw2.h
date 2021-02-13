@@ -20,6 +20,11 @@ public:
 
     void change_pay_method(PayMethod* m)
     {
+        if(pay_method_ != nullptr)
+        {
+            delete pay_method_;
+        }
+
         pay_method_ = m;
     }
 
