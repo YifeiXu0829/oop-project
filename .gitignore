@@ -1,6 +1,6 @@
-hw*/CMakeCache.txt
-hw*/CMakeFiles
-hw*/Makefile
-hw*/cmake_install.cmake
-hw*/build/*
-hw*/config.h
+*/CMakeCache.txt
+*/CMakeFiles
+*/Makefile
+*/cmake_install.cmake
+*/build/*
+*/config.h
