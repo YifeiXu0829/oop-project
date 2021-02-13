@@ -22,6 +22,14 @@ public:
     {
         pay_method_ = m;
     }
+
+    ~ShoppingCart()
+    {
+        if(pay_method_ != nullptr)
+        {
+            delete pay_method_;
+        }
+    }
 private:
-    PayMethod* pay_method_;
+    PayMethod* pay_method_ = nullptr;
 };
