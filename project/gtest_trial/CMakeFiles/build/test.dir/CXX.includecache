@@ -1,0 +1,12 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/yifeix/git/oop-project/project/test.cpp
+gtest/gtest.h
+/Users/yifeix/git/oop-project/project/gtest/gtest.h
+

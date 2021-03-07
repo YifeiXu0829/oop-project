@@ -116,6 +116,10 @@ struct student : public virtual user
                    break;
         }
     }
+
+    virtual void drop_course(){}
+    virtual void swap_course(){}
+    virtual void get_my_grade(){}
 };
 
 struct faculty : public virtual user
@@ -136,6 +140,10 @@ struct faculty : public virtual user
     {
         std::cout<<"request grade_course\n";
     }
+
+    virtual void approve_registry(){}
+    virtual void deny_registry(){}
+    virtual void close_registry(){}
 };
 
 struct instructor : public virtual faculty
@@ -145,6 +153,10 @@ struct instructor : public virtual faculty
 
     }
     virtual ~instructor(){}
+
+    virtual void add_course(){}
+    virtual void modify_course(){}
+    virtual void delete_course(){}
 };
 
 struct TA final : public instructor, student
@@ -186,6 +198,10 @@ struct admin final : public faculty
     {
 
     }
+
+    virtual void add_user(){}
+    virtual void modify_user(){}
+    virtual void delete_user(){};
 };
 
 class role_factory

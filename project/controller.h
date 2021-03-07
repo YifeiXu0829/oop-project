@@ -29,7 +29,6 @@ public:
         std::cout<<"welcome to REGIE system\n";
 
         user_ = role_factory::make_role(static_cast<role>(role_str), *this);
-        course_manager_ = course_manager_factory::make_course_manager(static_cast<role>(role_str), *this);
         user_->show_permissions();
     }
 
@@ -44,8 +43,8 @@ public:
     }
 
 private:
-    account_manager account_manager_;
+    account_manager account_manager_{*this};
+    course_manager course_manager_{*this};
     std::unique_ptr<user> user_{nullptr};
-    std::unique_ptr<CourseManagerBase> course_manager_{nullptr};
     logger logger_;
 };
