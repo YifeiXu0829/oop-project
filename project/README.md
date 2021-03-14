@@ -39,7 +39,7 @@ please follow https://github.com/google/leveldb to install leveldb, a nosql with
 also, please make sure your compiler support c++20. (please check CMakeLists.txt for details)
 
 
-# **use draw.io to open UML.xml for uml graph**
+# (**please use draw.io to open UML.xml for uml graph**)
 
 # Iteration 1: #
 
