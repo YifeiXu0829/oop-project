@@ -76,17 +76,24 @@ private:
     connection conn_;
 };
 
-class account_tables_access : public database_access_interface
+class account_tables_access final : public database_access_interface
 {
+private:
+    leveldb::DB* db;
 public:
     account_tables_access()
     {
-        leveldb::DB* db;
         leveldb::Options options;
         options.create_if_missing = true;
-        leveldb::Status status = leveldb::DB::Open(options, "/tmp/testdb", &db);
+        leveldb::Status status = leveldb::DB::Open(options, "/tmp/user_registered_courses", &db);
         assert(status.ok());
     }
+
+    ~account_tables_access()
+    {
+        delete db;
+    }
+
     void list_all_accounts()
     {
         std::string sql = "select username,role from accounts";
