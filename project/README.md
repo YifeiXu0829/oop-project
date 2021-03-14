@@ -1,14 +1,15 @@
-pre-requirements:
+# pre-requirements:
 
-# use draw.io to open UML.xml for uml graph
+**use draw.io to open UML.xml for uml graph**
 
 in postgresql:
 
-// login as user postgres
+**login as user postgres**
 
 psql -U postgres
 
-// create database and tables
+**create database and tables**
+
 CREATE DATABASE regie;
 
 CREATE TABLE accounts (
@@ -25,9 +26,10 @@ CREATE TABLE courses (
         instructor VARCHAR(50) NOT NULL
 );
 
-// populate some pre-saved database info
+**populate some pre-saved database info**
 
 insert into accounts(username,password,role) values('yifeix','yifeix','A');
+
 insert into accounts(username,password,role) values('terry','terry','T');
 
 
