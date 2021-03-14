@@ -105,6 +105,33 @@ public:
         }
     }
 
+    bool register_course(std::string username, std::string coursename)
+    {
+        std::string value;
+        leveldb::Status s = db->Get(leveldb::ReadOptions(), username, &value);
+        if (s.ok()) s = db->Put(leveldb::WriteOptions(), username, value+","+coursename);
+
+        return s.ok();
+    }
+
+    bool drop_course(std::string username, std::string coursename)
+    {
+        std::string value;
+        leveldb::Status s = db->Get(leveldb::ReadOptions(), username, &value);
+        if (s.ok())
+        {
+            // remove course from value
+            auto i = value.find(coursename);
+            if ( i != std::string::npos )
+            {
+                value.erase(i, coursename.length());
+                s = db->Put(leveldb::WriteOptions(), username, value);
+                return s.ok();
+            }
+        }
+        return false;
+    }
+
     bool add_user(std::string username, std::string pw, std::string role)
     {
         std::string sql = "insert into accounts(username,password,role) values('"+ username + "','"+ pw +"','"+ role +"');";

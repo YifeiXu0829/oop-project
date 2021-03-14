@@ -24,9 +24,14 @@ public:
     }
 
     void get_my_grade(){std::cout<<"test get_my_grade\n";}
-    virtual void register_course(){std::cout<<"test register_course\n";}
-    virtual void drop_course(){std::cout<<"test drop_course\n";}
-    virtual void swap_course(){std::cout<<"test swap_course\n";}
+    virtual void register_course(string usrname, string course)
+    {
+        db_.register_course(usrname, course);
+    }
+    virtual void drop_course(string usrname, string course)
+    {
+        db_.drop_course(usrname, course);
+    }
 
     virtual void approve_registry(){}
     virtual void deny_registry(){}
