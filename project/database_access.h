@@ -1,6 +1,8 @@
 #include <iostream>
 #include <tuple>
+#include <cassert>
 #include <pqxx/pqxx>
+#include "leveldb/db.h"
 
 
 using namespace std;
@@ -77,7 +79,14 @@ private:
 class account_tables_access : public database_access_interface
 {
 public:
-    account_tables_access() = default;
+    account_tables_access()
+    {
+        leveldb::DB* db;
+        leveldb::Options options;
+        options.create_if_missing = true;
+        leveldb::Status status = leveldb::DB::Open(options, "/tmp/testdb", &db);
+        assert(status.ok());
+    }
     void list_all_accounts()
     {
         std::string sql = "select username,role from accounts";

@@ -25,7 +25,9 @@ find_package(PostgreSQL REQUIRED)
 add_executable(regie regie.cpp)
 target_link_libraries(${PROJECT_NAME} PUBLIC ${PostgreSQL_LIBRARIES})
 target_link_libraries(${PROJECT_NAME} PUBLIC /usr/local/lib/libpqxx.dylib)
+target_link_libraries(${PROJECT_NAME} PUBLIC ${CMAKE_SOURCE_DIR}/leveldb/build/libleveldb.a)
 target_include_directories(${PROJECT_NAME} PUBLIC ${PostgreSQL_INCLUDE_DIRS})
+target_include_directories(${PROJECT_NAME} PUBLIC leveldb/include)
 
 # Link test executable against gtest & gtest_main
 #target_link_libraries(runUnitTests GTest::GTest GTest::Main)
