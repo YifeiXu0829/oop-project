@@ -85,7 +85,7 @@ permissions are related to two types of management
 
 ### Database Use Choice ###
 
-for account manager usage, its data is relatively unstructured, such as the field of registered-courses etc. We decided to use NoSql database (leveldb).
+for account manager usage, its data is relatively unstructured, such as the field of registered-courses, each course's grade per user registered etc. We decided to use NoSql database (leveldb).
 
 for course manager usage, its data is rather structured. We decided to use PostgresSql for course manager operations.
 

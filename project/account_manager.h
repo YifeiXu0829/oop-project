@@ -18,19 +18,19 @@ public:
     // get into postgresql database to validate credential and get role info
     std::tuple<bool, char> validate_credential(string usrname, string password)
     {
-        //return std::make_tuple(false, "");
-        //return std::make_tuple(true, 'T');
+        //return {false, 'A'};
+        //return {true, 'T')};
         return db_.validate_credential(usrname, password);
     }
 
-    void get_my_grade(){}
-    virtual void register_course(){std::cout<<"register_course\n";}
-    virtual void drop_course(){}
-    virtual void swap_course(){}
+    void get_my_grade(){std::cout<<"test get_my_grade\n";}
+    virtual void register_course(){std::cout<<"test register_course\n";}
+    virtual void drop_course(){std::cout<<"test drop_course\n";}
+    virtual void swap_course(){std::cout<<"test swap_course\n";}
 
     virtual void approve_registry(){}
     virtual void deny_registry(){}
-    virtual void grade_course(){}
+    virtual void grade_course(){std::cout<<"test grade_course\n";}
 
     virtual void add_user(std::string username, std::string pw, std::string role)
     {
@@ -40,8 +40,16 @@ public:
             std::cout<<"successfully added user:"<<username<<" role:"<<role<<std::endl;
         }
     }
-    virtual void modify_user(){}
-    virtual void delete_user(){};
+
+    virtual void modify_user(std::string username, std::string pw, std::string role)
+    {
+        [[maybe_unused]] auto ok = db_.modify_user(username, pw, role);
+    }
+
+    virtual void delete_user(std::string username)
+    {
+        [[maybe_unused]] auto ok = db_.delete_user(username);
+    }
 
 private:
     controller& ctrl_;

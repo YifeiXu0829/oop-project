@@ -95,6 +95,18 @@ public:
         return transaction(sql);
     }
 
+    bool modify_user(std::string username, std::string pw, std::string role)
+    {
+        std::string sql = "update accounts set pw = '"+ pw +"', role='"+role+"' where username='"+username+"'";
+        return transaction(sql);
+    }
+
+    bool delete_user(std::string username)
+    {
+        std::string sql = "delete from accounts where username='"+username+"'";
+        return transaction(sql);
+    }
+
     std::tuple<bool, char> validate_credential(string username, string password)
     {
         std::string sql = "select role from accounts where username='" + username + "' and password='" + password + "'";

@@ -12,10 +12,7 @@ class controller;
 class course_manager
 {
 public:
-    course_manager(controller& c) : ctrl_(c)
-    {
-
-    }
+    course_manager(controller& c) : ctrl_(c){}
 
     void list_all_courses()
     {
