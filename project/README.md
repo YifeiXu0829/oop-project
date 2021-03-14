@@ -1,7 +1,5 @@
 # pre-requirements: #
 
-**use draw.io to open UML.xml for uml graph**
-
 in postgresql:
 
 **login as user postgres**
@@ -36,8 +34,12 @@ libraries requirements:
 
 please follow https://github.com/jtv/libpqxx to install libpqxx, the C++ API to the PostgreSQL database management system.
 
+please follow https://github.com/google/leveldb to install leveldb, a nosql with c++ api support.
+
 also, please make sure your compiler support c++20. (please check CMakeLists.txt for details)
 
+
+# **use draw.io to open UML.xml for uml graph**
 
 # Iteration 1: #
 
